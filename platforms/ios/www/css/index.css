@@ -1,0 +1,239 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    padding: 0;
+}
+
+#editor {
+/*    width: 100%;
+    height: 100%;*/
+    height: 600px;
+}
+
+
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+#header {
+    z-index:1;
+}
+
+#main-menu-button {
+    position: absolute;
+    left: calc(100% - 70px);
+    top: calc(100% - 70px);
+    z-index: 10;
+
+}
+
+.bg-blue {
+    background-color: #2196F3;
+}
+
+.bg-red {
+    background-color: #FF4081;
+}
+
+.hiden {
+    display: none;
+}
+
+.op-zero {
+    opacity: 0;
+}
+
+#main-menu {
+    width: 100%;
+    position: fixed;
+    background-color: #fff;
+    /*box-shadow: 0 2px 1.5px 0 rgba(0, 0, 0, 0.12), 0 5px 40px 0 rgba(0, 0, 0, 0.24);*/
+    z-index:11;
+    transform: scale(0.5);
+    overflow-y: scroll;
+}
+
+.menu-grid {
+    width: 100%;
+    height: 100%;
+    padding: 5% 5%;
+    position: relative;
+
+}
+
+.menu-cell {
+    width: 23%;
+    height: 100px;
+    float: left;
+}
+
+.menu-cell > div {
+    position: relative;
+    border-radius: 50%;
+    color: white;
+    width: 70%;
+    height: 70%;
+    margin-left: 15%;
+}
+
+.menu-cell > p {
+    color: #9A9A9A;
+    font-size: 12px;
+    text-align: center;
+}
+
+.menu-cell > div > i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 30px;
+    transform: translate(-15px, -15px);
+}
+
+.top-window {
+    position: fixed;
+    top: 0%;
+    width: 100%;
+
+    /*transform: translate(-100%);*/
+    padding: 3px 20px;
+    padding-bottom: 15px;
+
+    background-color: #fff;
+    z-index: 11;
+
+    /* paddingをwidthに含める */
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+
+.bottom-window {
+    position: fixed;
+    top: 100%;
+    width: 100%;
+
+    /*transform: translate(-100%);*/
+    padding: 3px 20px;
+    padding-bottom: 15px;
+
+    background-color: #fff;
+    z-index: 11;
+
+    /* paddingをwidthに含める */
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+#find-window {
+    
+    box-shadow: 0 2px 1.5px 0 rgba(0, 0, 0, 0.12), 0 5px 40px 0 rgba(0, 0, 0, 0.24);
+}
+
+#find-buttons {
+    padding: 0 auto;
+}
+
+#input-find {
+    width: 100%;
+}
+
+
+.menuIn {
+
+    animation-name: menuInAnimation; /*@keyframesで定義したアニメーション名*/
+    animation-duration: 0.2s; /*アニメーションにかかる時間*/
+    animation-iteration-count: 1; /*ループ回数*/
+    animation-fill-mode:forwards;
+    animation-timing-function: ease
+
+}
+@keyframes menuInAnimation { /*キーフレームルールの定義*/
+    0%{ /*始点*/
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    40% { /*終点*/
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    99.9%,100% { /*終点*/
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.menuOut {
+
+    animation-name: menuOutAnimation; /*@keyframesで定義したアニメーション名*/
+    animation-duration: 0.2s; /*アニメーションにかかる時間*/
+    animation-iteration-count: 1; /*ループ回数*/
+    animation-fill-mode:forwards;
+    animation-timing-function: ease
+
+}
+@keyframes menuOutAnimation { /*キーフレームルールの定義*/
+    0%{ /*始点*/
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    40% { /*終点*/
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    99.9%,100% { /*終点*/
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}
